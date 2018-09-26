@@ -7,13 +7,11 @@
       <!-- <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>. -->
   </div>
 </template>
-
 <script>
 export default {
   name: 'BookCard',
   props: {
-   // msg: String,
-   book: Object,
+    book: Object,
   },
 };
 </script>

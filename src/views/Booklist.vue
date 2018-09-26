@@ -2,10 +2,16 @@
   <div class="home">
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
     <!-- <Quickbook msg="this book component"/> -->
-    <BookCard v-for="book in books" :key="book.id" :book="book"/>
+    <div id="author-info">
+      <p>{{ authorInfo.author }}</p>
+      <p>{{ authorInfo.birthday }}</p>
+      <p>{{ authorInfo.birthPlace }}</p>
+    </div>
+    <div class="book-list">
+      <BookCard v-for="book in books" :key="book.id" :book="book"/>
+    </div>
   </div>
 </template>
-
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue';
@@ -18,21 +24,20 @@ export default {
   },
   data(){
     return {
-      books: []
+      authorInfo:[],
+      books: [],
     }
   },
   created(){
     axios
     .get('https://s3.amazonaws.com/api-fun/books.json')
     .then(response => {
+      this.authorInfo = response.data.data;
       this.books = response.data.data.books;
-       console.log('yo book ' + response.data.data.books)
-       // console.log('yo book ' + JSON.stringify(response.data))
     })
     .catch(error => {
-      console.log('yo son, Error ' + error.response.data)
-    })
-
+      console.log('Error ' + error.response.data)
+    });
   },
 };
 </script>
