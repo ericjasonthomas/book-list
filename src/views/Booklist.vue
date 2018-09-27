@@ -1,11 +1,10 @@
 <template>
-  <div class="home">
-    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
+  <div class="books-page">
     <!-- <Quickbook msg="this book component"/> -->
     <div id="author-info">
-      <p>{{ authorInfo.author }}</p>
-      <p>{{ authorInfo.birthday }}</p>
-      <p>{{ authorInfo.birthPlace }}</p>
+      <div>Author: <span>{{ authorInfo.author }}</span></div>
+      <div>Author's birthday: <span>{{ authorInfo.birthday }}</span></div>
+      <div>Author's birth place: <span>{{ authorInfo.birthPlace }}</span></div>
     </div>
     <div class="book-list">
       <BookCard v-for="book in books" :key="book.id" :book="book"/>
@@ -16,28 +15,29 @@
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue';
 import BookCard from '@/components/BookCard.vue';
-import axios from 'axios'
+import axios from 'axios';
+
 export default {
   name: 'Booklist',
   components: {
     BookCard,
   },
-  data(){
+  data() {
     return {
-      authorInfo:[],
+      authorInfo: [],
       books: [],
-    }
+    };
   },
-  created(){
+  created() {
     axios
-    .get('https://s3.amazonaws.com/api-fun/books.json')
-    .then(response => {
-      this.authorInfo = response.data.data;
-      this.books = response.data.data.books;
-    })
-    .catch(error => {
-      console.log('Error ' + error.response.data)
-    });
+      .get('https://s3.amazonaws.com/api-fun/books.json')
+      .then((response) => {
+        this.authorInfo = response.data.data;
+        this.books = response.data.data.books;
+      })
+      .catch((error) => {
+        this.error = error.response.data;
+      });
   },
 };
 </script>
