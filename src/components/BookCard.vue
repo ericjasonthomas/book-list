@@ -1,37 +1,58 @@
 <template>
-  <div class="BookCard">
-    <!-- <h1>{{ msg }}</h1> -->
-      <p>{{ book.title }}</p>
-      <img v-bind:src="book.imageUrl"/>
-      <!-- <img src={{ book.imageUrl }}/> -->
-      <!-- <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>. -->
+  <div class="book-card">
+    <a v-bind:href="book.purchaseLink">
+      <div class="book-img">
+        <img :src="book.imageUrl" :alt="book.title + 'cover'"/>
+      </div>
+      <div class="book-info">
+        <h3>{{ book.title }}</h3>
+        <p>Publish in {{ book.PublishDate }}</p>
+        <!-- <p>{{book.purchaseLink}}</p> -->
+      </div>
+    </a>
   </div>
 </template>
-
 <script>
 export default {
   name: 'BookCard',
   props: {
-   // msg: String,
-   book: Object,
+    book: Object,
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.book-card {
+  border: 1px solid #ccc;
+  margin:0 auto;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  a {
+    text-decoration: none;
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
 h3 {
   margin: 40px 0 0;
+  color: #000;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+.book-img {
+  width: 218px;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+.book-info{
+  border:1px solid #ccc;
+  flex-basis: auto;
+  text-align: left;
 }
 a {
-  color: #42b983;
+//  color: #42b983;
+}
+.book-card a:hover{
+//  background:#ccc;
 }
 </style>
