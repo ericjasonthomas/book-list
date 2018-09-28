@@ -2,12 +2,11 @@
   <div class="book-card">
     <a v-bind:href="book.purchaseLink">
       <div class="book-img">
-        <img :src="book.imageUrl" :alt="book.title + 'cover'"/>
+        <img :src="book.imageUrl" :alt="bookImgAlt"/>
       </div>
       <div class="book-info">
         <h3>{{ book.title }}</h3>
         <p>Publish in {{ book.PublishDate }}</p>
-        <!-- <p>{{book.purchaseLink}}</p> -->
       </div>
     </a>
   </div>
@@ -18,7 +17,13 @@ export default {
   props: {
     book: Object,
   },
+  computed: {
+    bookImgAlt() {
+      return `${this.book.title} cover`;
+    },
+  },
 };
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

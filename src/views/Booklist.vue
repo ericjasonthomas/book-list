@@ -1,10 +1,13 @@
 <template>
-  <div class="books-page">
+  <div class="page">
     <!-- <Quickbook msg="this book component"/> -->
     <div id="author-info">
       <div>Author: <span>{{ authorInfo.author }}</span></div>
       <div>Author's birthday: <span>{{ authorInfo.birthday }}</span></div>
       <div>Author's birth place: <span>{{ authorInfo.birthPlace }}</span></div>
+    </div>
+    <div id="sort-btns">
+      <button>Sort by Title ASC DESC <span class="arrow-icon"></span></button>
     </div>
     <div class="book-list">
       <BookCard v-for="book in books" :key="book.id" :book="book"/>
@@ -26,7 +29,15 @@ export default {
     return {
       authorInfo: [],
       books: [],
+      currentSort: 'name',
+      currentSortDir: 'asc',
     };
+  },
+  computed: {
+
+  },
+  methods: {
+
   },
   created() {
     axios
