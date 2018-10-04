@@ -1,6 +1,10 @@
 <template>
-  <div class="home-page">
+  <div class="page">
+<<<<<<< HEAD
+    <img alt="Vue logo" src="../assets/logo.png">
+=======
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
+>>>>>>> 9c7ac4db2f5f8b9d3252d70eead37e246f727e90
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 

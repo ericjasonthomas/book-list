@@ -1,0 +1,249 @@
+body {
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+<<<<<<< HEAD
+  background-color: #AAB7B8;
+=======
+>>>>>>> 9c7ac4db2f5f8b9d3252d70eead37e246f727e90
+}
+.page,
+.container {
+  padding:12px;
+<<<<<<< HEAD
+=======
+  border:1px solid #999;
+>>>>>>> 9c7ac4db2f5f8b9d3252d70eead37e246f727e90
+  display:inline-block;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+  width:100%;
+<<<<<<< HEAD
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+=======
+>>>>>>> 9c7ac4db2f5f8b9d3252d70eead37e246f727e90
+}
+#app {
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+<<<<<<< HEAD
+  margin: 0 auto;
+  display: block;
+  background-color: white;
+  padding-bottom: 60px;
+}
+#branding {
+background: #AAB7B8;
+}
+// global nav
+#nav {
+  background:#eee;
+  a {
+    text-decoration: none;
+    font-weight: 500;
+    color: $color-med-blue;
+    &.router-link-exact-active {
+      color: $color-med-blue;
+      // text-decoration: none;
+    }
+  }
+}
+footer {
+  background: #AAB7B8;
+  color:white;
+  text-align: center;
+  position:fixed;
+  display: inline-block;
+  bottom:0;
+  left:0;
+  width:100%;
+  height: 40px;
+}
+//search
+#search-books {
+  margin:0 0 10px 0;
+  ::placeholder,
+  ::-webkit-input-placeholder {
+    color:#ccc;
+  }
+  input {
+    color: $color-med-blue;
+    font-size: 1.5rem;
+    width:100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #CCC;
+    color: #555;
+    height: 50px;
+    position: relative;
+
+    &:focus {
+      outline: none;
+    }
+    &:focus::-webkit-input-placeholder {
+      color: $color-med-blue;
+    }
+    &:focus+.underline {
+      transform: scale(1);
+    }
+  }
+}
+.search-no-match {
+  display: flex;
+  font-size: 2.5rem;
+  div {
+    flex-grow: 1;
+  }
+  .msg {
+    color:#9B0978;
+  }
+  .emoji {
+    font-size: 6rem;
+    margin-right: 1rem;
+  }
+}
+//
+// Buttons
+#sort-btns {
+  margin:0 0 20px 0;
+  @media only screen and (max-width: 420px) {
+    text-align:center;
+  }
+}
+.booklist-btn {
+  margin:.5rem .5rem 0 0;
+}
+
+/* Material style */
+button {
+  border: none;
+  cursor: pointer;
+  color: white;
+  padding: 8px;
+  border-radius: 2px;
+  font-size: 1rem;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, .4);
+  background: $color-med-blue;
+  outline:none;
+}
+
+/* Ripple magic */
+button{
+  position: relative;
+  overflow: hidden;
+}
+
+button:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, .5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+button:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+.arrow-down {
+  width: 18px;
+  height: 12px;
+  position: relative;
+  display: inline-block;
+}
+
+
+.arrow-down:before, .arrow-down:after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 2px;
+  background: white;
+  position: absolute;
+  top: .4rem;
+  transition: transform .5s;
+}
+
+.arrow-down:before {
+  right: 4px;
+  transform: rotate(45deg);
+}
+
+.arrow-down:after {
+  right: -2px;
+  transform: rotate(-45deg);
+}
+
+.arrow-down.active:before {
+  transform: rotate(-45deg);
+}
+
+.arrow-down.active:after {
+  transform: rotate(45deg);
+}
+// booklist page
+#author-info {
+  margin:0 0 10px 0;
+=======
+  border:1px solid #ccc;
+  // margin: 0 auto;
+  padding: 0;
+  display: block;
+}
+#branding {
+  padding: 2px;
+}
+#nav {
+  padding: 2px;
+  background:#eee;
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+}
+.arrow {
+    float: right;
+    width: 0px;
+    height: 0px;
+    margin-top: 23px;
+    border: 10px solid transparent;
+    margin-top: 21px;
+    border-top-color: #F3F3F3;
+}
+.accordion-head.open .arrow {
+    margin-top: 11px;
+    border-bottom-color: #F3F3F3;
+    border-top-color: transparent;
+>>>>>>> 9c7ac4db2f5f8b9d3252d70eead37e246f727e90
+}
