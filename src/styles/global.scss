@@ -5,10 +5,10 @@ body {
 }
 .page,
 .container {
-  padding:12px;
+  // padding:12px;
   border:1px solid #999;
-  display:inline-block;
-  max-width: 800px;
+  // display:inline-block;
+  max-width: 1024px;
   margin: 0 auto;
   text-align: left;
   width:100%;
@@ -51,4 +51,9 @@ body {
     margin-top: 11px;
     border-bottom-color: #F3F3F3;
     border-top-color: transparent;
+}
+.book-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
