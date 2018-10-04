@@ -1,6 +1,10 @@
 <template>
   <div class="page">
+<<<<<<< HEAD
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+=======
+    <!-- <Quickbook msg="this book component"/> -->
+>>>>>>> 9c7ac4db2f5f8b9d3252d70eead37e246f727e90
     <div id="author-info">
       <h2>Books by <span>{{ authorInfo.author }}</span></h2>
       <p>{{ authorInfo.author }} was born on
@@ -17,6 +21,9 @@
       <button class="booklist-btn" v-on:click="reverseBooks">Reverse Order
         <span class="arrow-down" v-bind:class="{ active: isActive }"></span>
       </button>
+    </div>
+    <div id="sort-btns">
+      <button>Sort by Title ASC DESC <span class="arrow-icon"></span></button>
     </div>
     <div class="book-list">
       <BookCard v-for="book in filteredBooks" :key="book.id" :book="book" :authorInfo="authorInfo"/>
@@ -42,6 +49,7 @@ export default {
     return {
       authorInfo: [],
       books: [],
+<<<<<<< HEAD
       orgbooks: [],
       search: '',
       isActive: false,
@@ -61,6 +69,17 @@ export default {
       this.books.reverse();
       this.isActive = !this.isActive;
     },
+=======
+      currentSort: 'name',
+      currentSortDir: 'asc',
+    };
+  },
+  computed: {
+
+  },
+  methods: {
+
+>>>>>>> 9c7ac4db2f5f8b9d3252d70eead37e246f727e90
   },
   created() {
     axios

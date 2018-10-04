@@ -25,7 +25,13 @@ export default {
       return `${this.book.title} cover`;
     },
   },
+  computed: {
+    bookImgAlt() {
+      return `${this.book.title} cover`;
+    },
+  },
 };
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
