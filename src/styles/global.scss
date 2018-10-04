@@ -162,43 +162,131 @@ button:after {
 button:focus:not(:active)::after {
   animation: ripple 1s ease-out;
 }
-.arrow-down {
-  width: 18px;
-  height: 12px;
-  position: relative;
+button i {
+  margin: 0 .3rem 0 .3rem;
+  // margin-top: .4rem;
+  vertical-align:top;
   display: inline-block;
 }
-
-
-.arrow-down:before, .arrow-down:after {
-  content: "";
-  display: block;
-  width: 10px;
-  height: 2px;
-  background: white;
-  position: absolute;
-  top: .4rem;
-  transition: transform .5s;
-}
-
-.arrow-down:before {
-  right: 4px;
+.arrow {
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 2px;
   transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  margin-top: .4rem;
+  // transition: transform .5s;
 }
 
-.arrow-down:after {
-  right: -2px;
-  transform: rotate(-45deg);
+.arrow.active {
+  margin-top: .5rem;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
 }
 
-.arrow-down.active:before {
-  transform: rotate(-45deg);
-}
+// .arrow-down.active:after {
+//   transform: rotate(45deg);
+// }
 
-.arrow-down.active:after {
-  transform: rotate(45deg);
-}
+// .arrow-down:before, .arrow-down:after {
+//   content: "";
+//   display: block;
+//   width: 10px;
+//   height: 2px;
+//   background: white;
+//   position: absolute;
+//   top: .4rem;
+//   transition: transform .5s;
+// }
+//
+// .arrow-down:before {
+//   right: 4px;
+//   transform: rotate(45deg);
+// }
+//
+// .arrow-down:after {
+//   right: -2px;
+//   transform: rotate(-45deg);
+// }
+//
+// .arrow-down.active:before {
+//   transform: rotate(-45deg);
+// }
+//
+// .arrow-down.active:after {
+//   transform: rotate(45deg);
+// }
 // booklist page
 #author-info {
   margin:0 0 10px 0;
 }
+// transitions
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+//
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+.fadeOutDown {
+  animation-name: fadeOutDown;
+}
+.flip-list-move {
+  transition: transform 1s;
+}
+.bounce-enter-active {
+  animation: bounce-in .5s;
+}
+.bounce-leave-active {
+  animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+//
+// .listcard {
+//   display: inline-block;
+//   // margin-right: 10px;
+// }
+// .list-enter-active, .list-leave-active {
+//   transition: all 1s;
+// }
+// .listcard, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+//   // opacity: 0;
+//   transform: translateY(30px);
+// }

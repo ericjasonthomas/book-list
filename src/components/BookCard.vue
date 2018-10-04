@@ -1,4 +1,5 @@
 <template>
+  <transition name="fade">
   <div class="book-card">
     <a v-bind:href="book.purchaseLink">
       <div class="book-img">
@@ -12,6 +13,7 @@
     </a>
     <span class="underline"></span>
   </div>
+</transition>
 </template>
 <script>
 export default {
@@ -19,11 +21,6 @@ export default {
   props: {
     book: Object,
     authorInfo: Object,
-  },
-  computed: {
-    bookImgAlt() {
-      return `${this.book.title} cover`;
-    },
   },
   computed: {
     bookImgAlt() {

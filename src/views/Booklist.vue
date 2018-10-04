@@ -15,15 +15,19 @@
     <div id="sort-btns">
       <button class="booklist-btn" v-on:click="sortBooks">Alphabetically Order</button>
       <button class="booklist-btn" v-on:click="reverseBooks">Reverse Order
-        <span class="arrow-down" v-bind:class="{ active: isActive }"></span>
+        <i class="arrow down" v-bind:class="{ active: isActive }"></i>
       </button>
     </div>
     <div class="book-list">
-      <BookCard v-for="book in filteredBooks" :key="book.id" :book="book" :authorInfo="authorInfo"/>
-      <div class="search-no-match" v-show="filteredBooks < 1 ">
-        <div class="emoji">🤔</div>
-        <div class="msg"> We can't find a book title that matchs your search</div>
-      </div>
+        <BookCard class="listcard"
+                  v-for="book in filteredBooks"
+                  :key="book.id"
+                  :book="book"
+                  :authorInfo="authorInfo"/>
+    </div>
+    <div class="search-no-match" v-show="filteredBooks < 1 ">
+      <div class="emoji">🤔</div>
+      <div class="msg"> We can't find a book title that matchs your search</div>
     </div>
   </div>
 </template>
@@ -62,11 +66,13 @@ export default {
     },
   },
   created() {
+    // this.loading = true;
     axios
       .get('https://s3.amazonaws.com/api-fun/books.json')
       .then((response) => {
         this.authorInfo = response.data.data;
         this.books = response.data.data.books;
+        // this.loading = false;
       })
       .catch((error) => {
         this.error = error.response.data;
