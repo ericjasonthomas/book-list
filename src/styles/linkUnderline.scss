@@ -1,0 +1,14 @@
+.underline {
+  background-color: $color-med-blue;
+  display: block;
+  height: 2px;
+  // left: 50px;
+   margin-top: -1px;
+  // position: absolute;
+  // top: 185px;
+  -webkit-transform: scale(0, 1);
+  transform: scale(0, 1);
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+   width: 100%;
+}
