@@ -1,22 +1,41 @@
 <template>
   <div class="page">
-    <!-- <Quickbook msg="this book component"/> -->
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <div id="author-info">
-      <div>Author: <span>{{ authorInfo.author }}</span></div>
-      <div>Author's birthday: <span>{{ authorInfo.birthday }}</span></div>
-      <div>Author's birth place: <span>{{ authorInfo.birthPlace }}</span></div>
+      <h2>Books by <span>{{ authorInfo.author }}</span></h2>
+      <p>{{ authorInfo.author }} was born on
+         {{ authorInfo.birthday }} in
+         {{ authorInfo.birthPlace }}
+      </p>
+    </div>
+    <div id="search-books">
+      <input type="text" v-model="search" placeholder="Search Books"/>
+      <span class="underline"></span>
+    </div>
+    <div id="sort-btns">
+      <button class="booklist-btn" v-on:click="sortBooks">Alphabetically Order</button>
+      <button class="booklist-btn" v-on:click="reverseBooks">Reverse Order
+        <span class="arrow-down" v-bind:class="{ active: isActive }"></span>
+      </button>
+    </div>
+    <div id="sort-btns">
+      <button>Sort by Title ASC DESC <span class="arrow-icon"></span></button>
     </div>
     <div id="sort-btns">
       <button>Sort by Title ASC DESC <span class="arrow-icon"></span></button>
     </div>
     <div class="book-list">
-      <BookCard v-for="book in books" :key="book.id" :book="book"/>
+      <BookCard v-for="book in filteredBooks" :key="book.id" :book="book" :authorInfo="authorInfo"/>
+      <div class="search-no-match" v-show="filteredBooks < 1 ">
+        <div class="emoji">🤔</div>
+        <div class="msg"> We can't find a book title that matchs your search</div>
+      </div>
     </div>
   </div>
 </template>
+
+
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue';
 import BookCard from '@/components/BookCard.vue';
 import axios from 'axios';
 
@@ -29,15 +48,26 @@ export default {
     return {
       authorInfo: [],
       books: [],
-      currentSort: 'name',
-      currentSortDir: 'asc',
+      orgbooks: [],
+      search: '',
+      isActive: false,
     };
   },
   computed: {
-
+    filteredBooks() {
+      return this.books.filter(book =>
+        book.title.toLowerCase().match(this.search.toLowerCase()));
+    },
   },
   methods: {
-
+    sortBooks() {
+      this.books.sort((a, b) => a.title.localeCompare(b.title));
+    },
+    reverseBooks() {
+      this.books.reverse();
+      this.isActive = !this.isActive;
+    },
+    };
   },
   created() {
     axios
@@ -48,6 +78,7 @@ export default {
       })
       .catch((error) => {
         this.error = error.response.data;
+        // console.log("error");
       });
   },
 };
