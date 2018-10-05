@@ -38,16 +38,23 @@ export default {
 .book-card {
   //margin:0 auto;
   margin: 0 0 10px 0;
+  display:inline-block;
+  width:50%;
+  text-align: center;
+  @media only screen and (max-width: 420px) {
+    width:100%;
+    text-align: left;
+    // flex-wrap:nowrap;
+    // flex-direction:column;
+  }
+
   a {
     color: #999;
     text-decoration: none;
-    width:100%;
-    display:flex;
-    @media only screen and (max-width: 420px) {
-      flex-wrap:nowrap;
-      flex-direction:column;
-    }
-    :hover{
+    //width:50%;
+    text-align: center;
+    // display:flex;
+    &:hover{
       color: $color-med-blue;
       h3 {
         color: $color-med-blue;
@@ -62,24 +69,25 @@ export default {
   }
 }
 .book-img {
-  width: 218px;
+//  width: 218px;
+  text-align: center;
   @media only screen and (max-width: 420px) {
     width:100%;
     text-align: center;
   }
 }
 .book-info{
-  flex-grow: 1;
-  flex-basis: auto;
+  // flex-grow: 1;
+  // flex-basis: auto;
   @media only screen and (max-width: 420px) {
     width:100%;
     text-align: center;
   }
   justify-content: space-around;
-  text-align: left;
+//  text-align: left;
   h3 {
     color: black;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin: 10px 0 8px 0;
   }
 

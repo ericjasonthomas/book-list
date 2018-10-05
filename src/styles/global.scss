@@ -101,6 +101,12 @@ footer {
   }
 }
 //
+.book-list {
+  display:flex;
+  flex-wrap:wrap;
+  // flex-direction:column;
+  flex-direction: row;
+}
 // Buttons
 #sort-btns {
   margin:0 0 20px 0;
