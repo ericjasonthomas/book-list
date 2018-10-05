@@ -1,34 +1,35 @@
 <template>
   <div class="page">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <div id="author-info">
+    <section id="author-info">
       <h2>Books by <span>{{ authorInfo.author }}</span></h2>
       <p>{{ authorInfo.author }} was born on
          {{ authorInfo.birthday }} in
          {{ authorInfo.birthPlace }}
       </p>
-    </div>
-    <div id="search-books">
+    </section>
+    <section id="search-books">
       <input type="text" v-model="search" placeholder="Search Books"/>
       <span class="underline"></span>
-    </div>
-    <div id="sort-btns">
+    </section>
+    <section id="sort-btns">
       <button class="booklist-btn" v-on:click="sortBooks">Alphabetically Order</button>
       <button class="booklist-btn" v-on:click="reverseBooks">Reverse Order
         <i class="arrow down" v-bind:class="{ active: isActive }"></i>
       </button>
-    </div>
-    <div class="book-list">
+    </section>
+    <section class="book-list">
         <BookCard class="listcard"
                   v-for="book in filteredBooks"
                   :key="book.id"
                   :book="book"
                   :authorInfo="authorInfo"/>
-    </div>
-    <div class="search-no-match" v-show="filteredBooks < 1 ">
-      <div class="emoji">🤔</div>
-      <div class="msg"> We can't find a book title that matchs your search</div>
-    </div>
+        <div class="search-no-match" v-show="filteredBooks < 1 ">
+          <div class="emoji">🤔</div>
+          <div class="msg"> We can't find a book title that matchs your search</div>
+        </div>
+    </section>
+    <!-- <section v-if="dataloading">Loading...</section> -->
   </div>
 </template>
 
@@ -45,9 +46,9 @@ export default {
     return {
       authorInfo: [],
       books: [],
-      orgbooks: [],
       search: '',
       isActive: false,
+      dataLoading: false,
     };
   },
   computed: {
@@ -66,18 +67,18 @@ export default {
     },
   },
   created() {
-    // this.loading = true;
+    // move to vuex
     axios
       .get('https://s3.amazonaws.com/api-fun/books.json')
       .then((response) => {
         this.authorInfo = response.data.data;
         this.books = response.data.data.books;
-        // this.loading = false;
+        this.dataLoading = false;
       })
       .catch((error) => {
         this.error = error.response.data;
         // console.log("error");
-      });
+      })
   },
 };
 </script>

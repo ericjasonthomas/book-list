@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
   <div class="book-card">
-    <a v-bind:href="book.purchaseLink">
+    <a v-bind:href="book.purchaseLink" target="_blank">
       <div class="book-img">
         <img :src="book.imageUrl" :alt="bookImgAlt"/>
       </div>
